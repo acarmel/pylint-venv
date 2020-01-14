@@ -97,13 +97,16 @@ def activate_venv(venv):
     sys.path[:] = new_paths + kept_paths
 
 
-def inithook(venv=None):
+def inithook(venv=None, force_activation=False):
     """Add a virtualenv's paths to Pylint.
 
     Use the environment *env* if set or auto-detect an active virtualenv.
 
+    force activation - if `True` the hook will be set even if there is an active virtual
+    environment. Relevant to case that Pylint itself is installed in a virtual
+    environment, other than the active one.
     """
-    if is_venv():
+    if not force_activation and is_venv():
         # pylint was invoked from within a venv.  Nothing to do.
         return
 
