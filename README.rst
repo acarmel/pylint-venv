@@ -44,5 +44,16 @@ This way you can also explicitly set an environment to be used:
 
     $ pylint --init-hook="import pylint_venv; pylint_venv.inithook('$(pwd)/env')"
 
+
+In case Pylint is installed in a isolated virtualenv and not under a global python interpreter,
+e.g. with pipx_ or pre-commit_, you need to call init_hook with ``force activation=True``.
+Otherwise the hook will not work due to already be in a virtual environment:
+
+.. code:: python
+
+    pylint_venv.inithook(force_activation=True)
+
 .. _Pylint: http://www.pylint.org/
 .. _virtualenv: https://virtualenv.pypa.io/en/latest/
+.. _pipx: https://github.com/pipxproject/pipx/
+.. _pre-commit: https://pre-commit.com/
