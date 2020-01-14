@@ -46,13 +46,14 @@ This way you can also explicitly set an environment to be used:
 
 
 In case Pylint is installed in a isolated virtualenv and not under a global python interpreter,
-e.g. with pipx_ or pre-commit_, you need to call init_hook with ``force activation=True``.
-Otherwise the hook will not work due to already be in a virtual environment:
+e.g. with pipx_ or pre-commit_,  call ``init_hook`` with ``force activation``:.
+
 
 .. code:: python
 
     pylint_venv.inithook(force_activation=True)
 
+Otherwise the hook will not work due to already be in a virtual environment.
 .. _Pylint: http://www.pylint.org/
 .. _virtualenv: https://virtualenv.pypa.io/en/latest/
 .. _pipx: https://github.com/pipxproject/pipx/
